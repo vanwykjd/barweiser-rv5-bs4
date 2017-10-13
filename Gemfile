@@ -35,6 +35,7 @@ gem 'sprockets-rails', '~> 3.2', '>= 3.2.1'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'sprockets', '~> 3.7', '>= 3.7.1'
 
+gem 'devise'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

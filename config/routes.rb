@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  
+  devise_for :owners
+    resources :owners, only: [:show] 
+  
+  
+  authenticated :owners do
+    root to: 'owners#show' , as: :authenticated_root
+  end
+  
   get 'guest/index'
     
   root 'guest#index'

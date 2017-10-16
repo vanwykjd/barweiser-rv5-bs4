@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
   devise_for :owners
-    resources :owners, only: [:show] 
+  
+  resources :owners, only: [:show] 
   
   
   authenticated :owners do

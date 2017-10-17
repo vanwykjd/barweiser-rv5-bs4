@@ -1,0 +1,50 @@
+<section class='sign-up text-center'>
+  <%= link_to image_tag("Barweiser3DG .png"), root_path, class: 'heading' %>
+  
+  <div class='devise-form'>
+      
+      <div class="text-center form-header">
+        <h5>Create your Barweiser account.</h5>
+      </div>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+
+        <div class="form-row">
+        <div class="form-group col">
+            <%= f.label :plan_id %><br />
+            <%= f.select(:plan_id, [['Wise', 1 ],['Weiser', 2 ],['Wisest', 3 ]], {include_blank: "Select Package"}, { :class => 'form-control' }) %>
+        </div>
+        </div>
+  
+    
+        <div class="form-group">
+            <%= f.email_field :email, class: 'form-control', placeholder: "Email", autofocus: true %>
+        </div>
+
+        <div class="form-group">
+            <%= f.text_field :company_name, class: 'form-control', placeholder: "Company Name", autofocus: true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.password_field :password, class: 'form-control', placeholder: "Password", autocomplete: "off" %>
+        </div>
+
+        <div class="form-group">
+           <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Confirm password", autocomplete: "off" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Sign up", class: 'btn sign-up-btn', data: { key: Rails.application.secrets.stripe_publishable_key} %>
+        </div>
+
+      <% end %>
+  </div>
+  
+  <div class="text-center">
+      <%= render "company_accounts/shared/links" %>
+  </div>
+    
+  
+</section>

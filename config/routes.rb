@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
   
-  devise_for :owners
-    resources :owners, only: [:show] 
   
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
-  authenticated :owners do
-    root to: 'owners#show' , as: :authenticated_root
+  devise_for :users
+  
+  devise_for :company_accounts, controllers: { 
+    registrations: 'company_accounts/registrations',
+    confirmations: 'company_accounts/confirmations'
+  }
+  
+  authenticated :users do
+    root to: 'dashboard#index' , as: :authenticated_root
   end
+
   
   get 'guest/index'
     

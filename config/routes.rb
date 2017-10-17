@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  
+  get 'dashboard/index'
+
+  get 'dashboard/show'
+
+
   
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   

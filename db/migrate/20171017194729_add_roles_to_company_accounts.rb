@@ -1,5 +1,5 @@
 class AddRolesToCompanyAccounts < ActiveRecord::Migration[5.1]
   def change
-    add_column :company_accounts, :role, :string, default: "owner"
+    add_column :company_accounts, :role, :string, default: 3
   end
 end

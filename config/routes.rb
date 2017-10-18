@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-  get 'dashboard/index'
-
-  get 'dashboard/show'
-
-
   
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
-  devise_for :users
+  devise_for :users, controllers: { 
+    registrations: 'users/registrations',
+    confirmations: 'users/confirmations'
+  }
   
   devise_for :company_accounts, controllers: { 
     registrations: 'company_accounts/registrations',
@@ -15,10 +14,9 @@ Rails.application.routes.draw do
   }
   
   authenticated :users do
-    root to: 'dashboard#index' , as: :authenticated_root
+    root to: 'dashboard#show' , as: :authenticated_root
   end
 
-  
   get 'guest/index'
     
   root 'guest#index'

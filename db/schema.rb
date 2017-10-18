@@ -61,12 +61,12 @@ ActiveRecord::Schema.define(version: 20171017195341) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_account_id"
     t.integer "role", default: 0, null: false
     t.string "username", default: "Staff User", null: false
     t.integer "company_id"
     t.string "first_name"
     t.string "last_name"
-    t.bigint "company_account_id"
     t.index ["company_account_id"], name: "index_users_on_company_account_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

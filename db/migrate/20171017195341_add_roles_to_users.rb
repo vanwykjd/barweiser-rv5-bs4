@@ -6,6 +6,6 @@ class AddRolesToUsers < ActiveRecord::Migration[5.1]
     add_column :users, :first_name, :string
     add_column :users, :last_name, :string
     add_index :users, :username, unique: true
-    add_reference :users, :company_account, index: true, foreign_key: true
+    add_index :users, :company_account_id
   end
 end

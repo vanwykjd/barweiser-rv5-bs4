@@ -7,12 +7,13 @@
         <h5>Create your Barweiser User account.</h5>
       </div>
 
-      <%= form_for(:user, as: :new_user_registration, url: '/users') do |f| %>
+      <%= form_for(:user, as: :new_user, url: '/users') do |f| %>
         <%= devise_error_messages! %>
 
         <%= f.hidden_field :role, value: @company_account.role %>
         <%= f.hidden_field :company_confim_token, value: @company_account.confirmation_token %>    
         <%= f.hidden_field :company_id, value: @company_account.id %>
+    
         <div class="form-group">
             <%= f.text_field :first_name, class: 'form-control', placeholder: "First name", autofocus: true %>
         </div>

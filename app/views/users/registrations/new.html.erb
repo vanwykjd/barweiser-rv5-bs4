@@ -11,12 +11,11 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
 
-        <%= f.hidden_field :company_id, value: @company_account.id %>    
-        <%= f.hidden_field :company_confim_token, value: @company_account.confirmation_token %>    
+       
     
         <div class="form-row">
           <div class="form-group col">
-              <%= f.select :role ( [['Admin', 2 ],['Manager', 1 ],['Staff', 0 ]], {include_blank: "Select Role"}, { :class => 'form-control' }) %>
+              <%= f.select(:role, [['Wise', 1 ],['Weiser', 2 ],['Wisest', 3 ]], {include_blank: "Select Package"}, { :class => 'form-control' }) %>
           </div>
         </div>
         

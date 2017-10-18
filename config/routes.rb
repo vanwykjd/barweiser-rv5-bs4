@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     confirmations: 'company_accounts/confirmations'
   }
   
+  
   authenticated :users do
     root to: 'dashboard#show' , as: :authenticated_root
   end
@@ -21,5 +22,4 @@ Rails.application.routes.draw do
     
   root 'guest#index'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

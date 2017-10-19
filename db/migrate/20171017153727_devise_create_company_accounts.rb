@@ -31,8 +31,9 @@ class DeviseCreateCompanyAccounts < ActiveRecord::Migration[5.1]
       # t.datetime :locked_at
       
       ## Subscription info
-      t.integer  "plan_id"
-      t.string   "company_name"
+      t.integer  :plan_id
+      t.string   :company_name
+      t.integer  :role , default: 3
       
 
       t.timestamps null: false

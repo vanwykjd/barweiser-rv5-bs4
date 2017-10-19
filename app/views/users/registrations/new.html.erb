@@ -1,0 +1,60 @@
+<section class='sign-up text-center'>
+  <%= link_to image_tag("Barweiser3DG.png"), root_path, class: 'heading' %>
+  
+  <div class='devise-form'>
+
+    <div class="text-center form-header">
+      <h2>Create a User Account</h2>
+    </div>
+    
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+         
+        <% if @account.number_of_users? %>
+            <div class="text-center form-header">
+                <h2> <% @account.number_of_users %></h2>
+            </div>
+        <% else %>
+            <div class="text-center form-header">
+                <h2>0</h2>
+            </div>
+        <% end %>
+
+        <div class="form-group">
+            <%= f.text_field :first_name, class: 'form-control', placeholder: "First Name", autofocus: true %>
+        </div>
+        
+        <div class="form-group">
+            <%= f.text_field :last_name, class: 'form-control', placeholder: "Last Name", autofocus: true %>
+        </div>
+    
+        <div class="form-group">
+            <%= f.text_field :username, class: 'form-control', placeholder: "Username", autofocus: true %>
+        </div>
+    
+        <div class="form-group">
+            <%= f.email_field :email, class: 'form-control', placeholder: "Email", autofocus: true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.password_field :password, class: 'form-control', placeholder: "Password", autocomplete: "off" %>
+        </div>
+
+        <div class="form-group">
+           <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Confirm password", autocomplete: "off" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Create User", class: 'btn sign-up-btn' %>
+        </div>
+    
+    <% end %>
+    
+    </div>
+  
+  <div class="text-center">
+      <%= render "users/shared/links" %>
+ </div>
+    
+  
+</section>

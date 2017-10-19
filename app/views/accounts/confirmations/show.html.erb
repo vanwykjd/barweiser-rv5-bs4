@@ -1,0 +1,49 @@
+<section class='sign-up text-center'>
+  <%= link_to image_tag("Barweiser3DG.png"), root_path, class: 'heading' %>
+  
+  <div class='devise-form'>
+      
+    <div class="text-center form-header">
+      <h4>Almost there...</h4>
+      <h2>Create you Admin User Account</h2>
+    </div>
+    
+    <%= form_for(:user, as: :user_registration, url: '/users') do |f| %>
+      <%= devise_error_messages! %>
+         
+        <%= f.hidden_field :role, value: 3 %>
+        <%= f.hidden_field :account_id, value: @account.id %>
+        <%= f.hidden_field :email, value: @account.email %>
+    
+        <div class="form-group">
+            <%= f.text_field :first_name, class: 'form-control', placeholder: "First Name", autofocus: true %>
+        </div>
+        
+        <div class="form-group">
+            <%= f.text_field :last_name, class: 'form-control', placeholder: "Last Name", autofocus: true %>
+        </div>
+    
+        <div class="form-group">
+            <%= f.text_field :username, class: 'form-control', placeholder: "Username", autofocus: true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.password_field :password, class: 'form-control', placeholder: "Password", autocomplete: "off" %>
+        </div>
+
+        <div class="form-group">
+           <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Confirm password", autocomplete: "off" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Create User", class: 'btn sign-up-btn' %>
+        </div>
+    
+    <% end %>
+  </div>
+  
+  <div class="text-center">
+      <%= render "users/shared/links" %>
+  </div>
+      
+</section>

@@ -1,6 +1,6 @@
-class DeviseCreateAccounts < ActiveRecord::Migration[5.1]
+class DeviseCreateUsers < ActiveRecord::Migration[5.1]
   def change
-    create_table :accounts do |t|
+    create_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -26,22 +26,26 @@ class DeviseCreateAccounts < ActiveRecord::Migration[5.1]
       t.string   :unconfirmed_email # Only if using reconfirmable
 
       ## Lockable
-      # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
-      # t.string   :unlock_token # Only if unlock strategy is :email or :both
-      # t.datetime :locked_at
+      t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
+      t.string   :unlock_token # Only if unlock strategy is :email or :both
+      t.datetime :locked_at
       
-      ## Company info
-      t.string   :company_name
-      t.integer  :plan_id
-      t.integer  :number_of_users
+      ## User info
+      t.string   :first_name
+      t.string   :last_name
+      t.string   :username
+      t.integer  :role
+      t.integer  :account_id
 
       t.timestamps null: false
     end
     
-    add_index :accounts, :company_name,         unique: true
-    add_index :accounts, :email,                unique: true
-    add_index :accounts, :reset_password_token, unique: true
-    add_index :accounts, :confirmation_token,   unique: true
-    # add_index :accounts, :unlock_token,         unique: true
+    add_index :users, :username,             unique: true
+    add_index :users, :email,                unique: true
+    add_index :users, :reset_password_token, unique: true
+    add_index :users, :confirmation_token,   unique: true
+    add_index :users, :unlock_token,         unique: true
+    add_index :users, :account_id
+    add_foreign_key :users, :accounts
   end
 end

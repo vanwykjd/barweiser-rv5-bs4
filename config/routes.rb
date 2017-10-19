@@ -10,6 +10,10 @@ Rails.application.routes.draw do
         registrations: 'accounts/registrations',
         confirmations: 'accounts/confirmations'
     }
+  
+  authenticated :users do
+    root to: 'dashboard#show' , as: :authenticated_root
+  end
       
   get 'guest/index'
     

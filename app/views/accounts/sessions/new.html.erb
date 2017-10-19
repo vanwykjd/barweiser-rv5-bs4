@@ -1,9 +1,10 @@
 <section class='sign-up text-center'>
-  <%= link_to image_tag("Barweiser3DG .png"), root_path, class: 'heading' %>
+  
+  <%= link_to image_tag("Barweiser3DG.png"), root_path, class: 'heading' %>
   
   <div class='devise-form'>
     <div class="text-center form-header">
-      <h5>Sign in</h5>
+      <h5>Create your Barweiser account.</h5>
     </div>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -16,19 +17,20 @@
       </div>
 
       <% if devise_mapping.rememberable? -%>
-        <div class="form-group">
+        <div class="field">
           <%= f.check_box :remember_me %>
           <%= f.label :remember_me %>
         </div>
       <% end -%>
 
       <div class="actions">
-        <%= f.submit "Log in", class: 'btn sign-up-btn'%>
+        <%= f.submit "Log in", class: 'btn sign-up-btn' %>
       </div>
-    <% end %>
-  </div> 
+    <% end %>  
+  </div>
   
   <div class="text-center">
-    <%= render "owners/shared/links" %>
+    <%= render "accounts/shared/links" %>
   </div>
+  
 </section>

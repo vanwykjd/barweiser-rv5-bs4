@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   authenticated :users do
     root to: 'dashboard#show' , as: :authenticated_root
   end
-
+  
+  get 'dashboard/show'
+  
   get 'guest/index'
     
   root 'guest#index'

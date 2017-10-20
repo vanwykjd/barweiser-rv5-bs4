@@ -6,7 +6,7 @@ class CreateDashboards < ActiveRecord::Migration[5.1]
       t.timestamps
     end
     
-    add_index :dashboards, :account_id
+    add_index :dashboards,       :account_id
     add_foreign_key :dashboards, :accounts
   end
 end

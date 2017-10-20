@@ -11,8 +11,10 @@ Rails.application.routes.draw do
         confirmations: 'accounts/confirmations'
     }
   
+  resources :dashboard
+  
   authenticated :users do
-    root to: 'dashboard#show' , as: :authenticated_root
+    root to: 'dashboard#show', as: :authenticated_root
   end
       
   get 'guest/index'

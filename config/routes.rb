@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   devise_for :users, controllers: { 
         registrations: 'users/registrations',
-        confirmations: 'users/confirmations'
+        confirmations: 'users/confirmations',
     }
   
   devise_for :accounts, controllers: { 
@@ -11,10 +11,10 @@ Rails.application.routes.draw do
         confirmations: 'accounts/confirmations'
     }
   
-  resources :dashboard
+
   
-  authenticated :users do
-    root to: 'dashboard#show', as: :authenticated_root
+  authenticated :user do
+    root 'dashboard#show', as: :authenticated_root
   end
       
   get 'guest/index'

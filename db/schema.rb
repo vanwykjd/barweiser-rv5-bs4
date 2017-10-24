@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171019222357) do
+ActiveRecord::Schema.define(version: 20171023210020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20171019222357) do
     t.index ["company_name"], name: "index_accounts_on_company_name", unique: true
     t.index ["confirmation_token"], name: "index_accounts_on_confirmation_token", unique: true
     t.index ["email"], name: "index_accounts_on_email", unique: true
+    t.index ["plan_id"], name: "index_accounts_on_plan_id"
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
@@ -46,6 +47,21 @@ ActiveRecord::Schema.define(version: 20171019222357) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_dashboards_on_account_id"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.integer "plan_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_services_on_plan_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -82,5 +98,6 @@ ActiveRecord::Schema.define(version: 20171019222357) do
   end
 
   add_foreign_key "dashboards", "accounts"
+  add_foreign_key "services", "plans"
   add_foreign_key "users", "accounts"
 end

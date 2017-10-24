@@ -1,0 +1,4 @@
+
+<%= content_tag :li, class: 'nav-item', id: "service-#{service.id}" do %>
+    <%= link_to service.name, service_path(service.id), method: :GET, class: 'nav-link' %>
+<% end %>

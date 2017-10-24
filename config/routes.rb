@@ -11,7 +11,8 @@ Rails.application.routes.draw do
         confirmations: 'accounts/confirmations'
     }
   
-
+  resources :services, only: [:show]
+  
   
   authenticated :user do
     root 'dashboard#show', as: :authenticated_root

@@ -12,12 +12,20 @@ Rails.application.routes.draw do
     }
   
   resources :services, only: [:show]
-  
-  
+
+
   authenticated :user do
-    root 'dashboard#show', as: :authenticated_root
+    root 'dashboard#show', as: :authenticated_user_root
   end
-      
+
+  
+
+  authenticated :account do
+    root 'dashboard#show', as: :authenticated_account_root
+  end
+
+  
+  
   get 'guest/index'
     
   root 'guest#index'

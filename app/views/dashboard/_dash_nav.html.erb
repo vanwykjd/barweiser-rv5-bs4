@@ -1,5 +1,8 @@
 <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
   <ul class="nav nav-pills flex-column">
+      <% if current_account %>
+        <%= link_to "Create New User as Admin", new_user_registration_path, class: 'nav-link' %>
+      <% end %>
       <%= render @plan.services %>
   </ul>
 </nav>

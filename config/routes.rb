@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  
+
   devise_for :users, controllers: { 
         registrations: 'users/registrations',
         confirmations: 'users/confirmations',
@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     }
   
   resources :services, only: [:show]
-
+  
+  resources :payments, only: [:new, :create]
 
   authenticated :user do
     root 'dashboard#show', as: :authenticated_user_root

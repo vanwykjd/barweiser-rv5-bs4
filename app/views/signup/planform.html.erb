@@ -1,0 +1,27 @@
+<div class='devise-form'>
+<% @plans.each do |plan| %>
+  <%= form_tag signup_registration_path do %>
+    <%= hidden_field_tag :plan, plan.id %>
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col"><%= plan.name %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= plan.id %></td>
+          </tr>
+          <tr>
+            <td><%= plan.amount %></td>
+          </tr>
+      <tr>
+      <div class="actions">
+          <%= submit_tag "CONTINUE", class: 'btn sign-up-btn' %>
+      </div>
+          </tr>
+            </tbody>
+      </table>
+    <% end %>
+<% end %>
+</div>

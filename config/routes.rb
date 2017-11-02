@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
   
 
+  resources :signup, only: [:new, :create]
+  get 'signup/planform', to: 'signup#planform', as: 'signup/planform'
+  get 'signup/planform/edit', to: 'signup#planform', as: 'signup/planform/edit'
+  
+  post 'signup/registration', to: 'signup#registration', as: 'signup/registration'
+  get 'signup/registration/edit', to: 'signup#registration', as: 'signup/registration/edit'
+  
+  post 'signup/register', to: 'signup#register', as: 'signup/register'
+  
+  
   devise_for :users, controllers: { 
         registrations: 'users/registrations',
         confirmations: 'users/confirmations',
@@ -14,6 +24,7 @@ Rails.application.routes.draw do
   resources :services, only: [:show]
   
   resources :payments, only: [:new, :create]
+  get 'thanks', to: 'payments#thanks', as: 'thanks'
 
   authenticated :user do
     root 'dashboard#show', as: :authenticated_user_root
